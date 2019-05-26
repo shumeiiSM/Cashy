@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:background="@color/white"
+    tools:context=".Reset">
+
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/back"
+        android:fontFamily="@font/pacifico"
+        android:text="@string/back"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="131dp"
+        android:layout_height="156dp"
+        app:srcCompat="@drawable/ic_unlock"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/tvReset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/pacifico"
+        android:text="Reset Password!"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/tvPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pacifico"
+        android:textSize="15sp"
+        android:text="New Password" />
+
+    <EditText
+        android:id="@+id/etPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:fontFamily="@font/pacifico"
+        android:textSize="15sp"
+        android:hint="********"/>
+
+    <TextView
+        android:id="@+id/tvCP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pacifico"
+        android:textSize="15sp"
+        android:text="Confirm Password" />
+
+    <EditText
+        android:id="@+id/etCP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:fontFamily="@font/pacifico"
+        android:textSize="15sp"
+        android:layout_marginBottom="50dp"
+        android:hint="********"/>
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginBottom="50dp"
+        android:background="@color/colorBlue"
+        android:fontFamily="@font/pacifico"
+        android:text="Reset"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+</LinearLayout>

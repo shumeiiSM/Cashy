@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:background="@color/white"
+    tools:context=".Forgot">
+
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/back"
+        android:fontFamily="@font/pacifico"
+        android:text="@string/back"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="131dp"
+        android:layout_height="156dp"
+        app:srcCompat="@drawable/ic_lock"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/tvF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/pacifico"
+        android:text="Forgot Password"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pacifico"
+        android:textSize="15sp"
+        android:text="Phone Number" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:ems="10"
+            android:inputType="phone"
+            android:fontFamily="@font/pacifico"
+            android:textSize="15sp"
+            android:layout_marginRight="20dp"
+            android:hint="91234567"/>
+
+        <Button
+            android:id="@+id/btnCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:fontFamily="@font/pacifico"
+            android:background="@color/colorBlue"
+            android:textColor="@color/white"
+            android:text="Send"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pacifico"
+        android:text="Access Code"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/etCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:fontFamily="@font/pacifico"
+        android:textSize="15sp"
+        android:layout_marginBottom="50dp"
+        android:hint="123456"/>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:fontFamily="@font/pacifico"
+        android:background="@color/colorBlue"
+        android:textColor="@color/white"
+        android:text="Submit"
+        android:textSize="15sp" />
+</LinearLayout>
