@@ -4,14 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/homeLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -41,13 +46,19 @@
     </LinearLayout>
 
     <Space
-        android:layout_width="0dp"
-        android:layout_height="10dp"
-        android:layout_weight="1" />
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -76,14 +87,48 @@
             android:textSize="50sp" />
     </LinearLayout>
 
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/fab_margin_right"
+        android:layout_marginBottom="180dp"
+        android:elevation="6dp"
+        app:srcCompat="@drawable/ic_happy"
+        tools:ignore="VectorDrawableCompat"
+        app:pressedTranslationZ="12dp"
+        android:backgroundTint="@color/add"
+        android:visibility="invisible"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_minus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/fab_margin_right"
+        android:layout_marginBottom="100dp"
+        android:elevation="6dp"
+        app:srcCompat="@drawable/ic_sad"
+        tools:ignore="VectorDrawableCompat"
+        app:pressedTranslationZ="12dp"
+        android:backgroundTint="@color/minus"
+        android:visibility="invisible"/>
+
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_add"
-        tools:ignore="VectorDrawableCompat" />
+        android:layout_marginRight="@dimen/fab_margin_right"
+        android:layout_marginBottom="16dp"
+        android:elevation="6dp"
+        android:src="@drawable/ic_add"
+        app:pressedTranslationZ="12dp"/>
 
+    </FrameLayout>
 
 </LinearLayout>

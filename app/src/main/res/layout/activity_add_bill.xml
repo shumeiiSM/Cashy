@@ -14,7 +14,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@android:color/white">
 
         <Button
             android:id="@+id/btnBack"
@@ -30,8 +31,8 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:fontFamily="@font/pacifico"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="New Bill"
             android:textSize="20sp" />
@@ -68,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pacifico"
                 android:gravity="center"
+                android:textColor="@android:color/black"
                 android:text="$"
                 android:textSize="40sp"/>
 
@@ -76,30 +78,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:gravity="center"
                 android:inputType="number"
                 android:fontFamily="@font/pacifico"
                 android:textSize="40sp" />
         </LinearLayout>
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="330dp">
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="330dp">-->
 
-        <TextView
-            android:id="@+id/tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/pacifico"
-            android:gravity="center"
-            android:text="Total Amount"
-            android:textSize="130sp" />
+        <!--<TextView-->
+            <!--android:id="@+id/tv"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:fontFamily="@font/pacifico"-->
+            <!--android:gravity="center"-->
+            <!--android:text="Total Amount"-->
+            <!--android:textSize="130sp" />-->
 
-    </ScrollView>
+    <!--</ScrollView>-->
 
     <ListView
+        android:id="@+id/lvContact"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="330dp" />
 
     <Button
         android:id="@+id/button3"

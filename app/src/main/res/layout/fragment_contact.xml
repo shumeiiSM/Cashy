@@ -41,15 +41,17 @@
             android:padding="4dp"
             android:scrollbars="vertical" />
 
-
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
+            android:layout_marginRight="@dimen/fab_margin_right"
+            android:layout_marginBottom="16dp"
+            android:elevation="6dp"
             app:srcCompat="@drawable/ic_add"
-            tools:ignore="VectorDrawableCompat" />
+            tools:ignore="VectorDrawableCompat"
+            app:pressedTranslationZ="12dp"/>
 
     </FrameLayout>
 

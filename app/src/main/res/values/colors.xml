@@ -8,6 +8,10 @@
     <color name="grey">#BDBDBD</color>
     <color name="darkgrey">#424242</color>
 
+    <color name="add">#004D40</color>
+    <color name="minus">#B71C1C</color>
+
+
 
     <color name="colorGreen">#55c364</color>
     <color name="colorRed">#ffff0000</color>
