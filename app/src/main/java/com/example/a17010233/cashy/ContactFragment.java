@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class ContactFragment extends Fragment implements RecyclerItemTouchHelper
     private ArrayList<Contact> contacts;
 
     FloatingActionButton fab;
+    TextView tvTotal;
 
 
 
@@ -56,6 +58,9 @@ public class ContactFragment extends Fragment implements RecyclerItemTouchHelper
         contacts.add(new Contact(R.drawable.ic_female, "Alvina", "94567890"));
         contacts.add(new Contact(R.drawable.ic_male, "Norman", "95678901"));
 
+        tvTotal = view.findViewById(R.id.tvTotal);
+        int item = contacts.size();
+        tvTotal.setText(String.valueOf(item));
 
         mRecyclerView = view.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -94,15 +99,14 @@ public class ContactFragment extends Fragment implements RecyclerItemTouchHelper
                         String theName = etName.getText().toString();
                         String theNum = etNum.getText().toString();
 
-//                        String theMale = etMale.getText().toString();
-//                        String theFemale = etFemale.getText().toString();
-
-
                         if (etMale.isChecked()) {
                             contacts.add(new Contact(R.drawable.ic_male, theName, theNum));
-                        } else {
+                        } else if (etFemale.isChecked()){
                             contacts.add(new Contact(R.drawable.ic_female, theName, theNum));
                         }
+
+                        int item = adapter.getItemCount();
+                        tvTotal.setText(String.valueOf(item));
                     }
                 });
                 myBuilder.setNegativeButton("CANCEL", null);
@@ -121,13 +125,16 @@ public class ContactFragment extends Fragment implements RecyclerItemTouchHelper
     public void onSwipe(RecyclerView.ViewHolder viewHolder, int direction, int position) {
         if (viewHolder instanceof ContactAdapter.ContactViewHolder) {
 
-            String name = contacts.get(viewHolder.getAdapterPosition()).getText1();
+            String name = contacts.get(viewHolder.getAdapterPosition()).getName();
             final Contact contact = contacts.get(viewHolder.getAdapterPosition());
             final int deletedIndex = viewHolder.getAdapterPosition();
 
             adapter.removeItem(viewHolder.getAdapterPosition());
 
             undoItem(viewHolder, name, contact,deletedIndex);
+
+            int item = adapter.getItemCount();
+            tvTotal.setText(String.valueOf(item));
 
         }
     }
@@ -139,6 +146,9 @@ public class ContactFragment extends Fragment implements RecyclerItemTouchHelper
             @Override
             public void onClick(View v) {
                 adapter.restoreItem(contact, deletedIndex);
+
+                int item = adapter.getItemCount();
+                tvTotal.setText(String.valueOf(item));
             }
         });
 

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ContactFragment">
-
 
 
     <!-- TODO: Update blank fragment layout -->
@@ -15,19 +14,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/pacifico"
-        android:textSize="30sp"
         android:gravity="center"
-        android:text="Friend's Contact" />
+        android:text="Friend's Contact"
+        android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/tvTotal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/pacifico"
-        android:textSize="15sp"
-        android:gravity="center"
-        android:layout_marginBottom="5dp"
-        android:text="Total: " />
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:id="@+id/tvTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/pacifico"
+            android:gravity="end"
+            android:text="Number"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/pacifico"
+            android:gravity="start"
+            android:text=" People"
+            android:textSize="20sp" />
+    </LinearLayout>
+
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -49,13 +66,11 @@
             android:layout_marginRight="@dimen/fab_margin_right"
             android:layout_marginBottom="16dp"
             android:elevation="6dp"
+            app:pressedTranslationZ="12dp"
             app:srcCompat="@drawable/ic_add"
-            tools:ignore="VectorDrawableCompat"
-            app:pressedTranslationZ="12dp"/>
+            tools:ignore="VectorDrawableCompat" />
 
     </FrameLayout>
-
-
 
 
 </LinearLayout>

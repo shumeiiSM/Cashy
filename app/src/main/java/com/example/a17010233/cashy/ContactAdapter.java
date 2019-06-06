@@ -16,8 +16,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
     public static class ContactViewHolder extends RecyclerView.ViewHolder {
         public ImageView mImageView;
-        public TextView tv1;
-        public TextView tv2;
+        public TextView name;
+        public TextView phone;
 
         public RelativeLayout foreBackground;
 
@@ -26,8 +26,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
             super(itemView);
 
             mImageView = itemView.findViewById(R.id.imageView);
-            tv1 = itemView.findViewById(R.id.tv1);
-            tv2 = itemView.findViewById(R.id.tv2);
+            name = itemView.findViewById(R.id.tvname);
+            phone = itemView.findViewById(R.id.tvphone);
 
             foreBackground = itemView.findViewById(R.id.view_forebackground);
 
@@ -50,8 +50,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     public void onBindViewHolder(@NonNull ContactViewHolder contactViewHolder, int position) {
         Contact currentItem = mContactList.get(position);
         contactViewHolder.mImageView.setImageResource(currentItem.getmImageResource());
-        contactViewHolder.tv1.setText(currentItem.getText1());
-        contactViewHolder.tv2.setText(currentItem.getText2());
+        contactViewHolder.name.setText(currentItem.getName());
+        contactViewHolder.phone.setText(currentItem.getPhone());
 
     }
 

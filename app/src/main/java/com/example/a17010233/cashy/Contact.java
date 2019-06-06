@@ -2,13 +2,13 @@ package com.example.a17010233.cashy;
 
 public class Contact {
     private int mImageResource;
-    private String text1;
-    private String text2;
+    private String name;
+    private String phone;
 
-    public Contact(int mImageResource, String text1, String text2) {
+    public Contact(int mImageResource, String name, String phone) {
         this.mImageResource = mImageResource;
-        this.text1 = text1;
-        this.text2 = text2;
+        this.name = name;
+        this.phone = phone;
     }
 
     public int getmImageResource() {
@@ -19,19 +19,19 @@ public class Contact {
         this.mImageResource = mImageResource;
     }
 
-    public String getText1() {
-        return text1;
+    public String getName() {
+        return name;
     }
 
-    public void setText1(String text1) {
-        this.text1 = text1;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getText2() {
-        return text2;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setText2(String text2) {
-        this.text2 = text2;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

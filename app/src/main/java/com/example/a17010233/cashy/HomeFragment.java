@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 
 /**
@@ -21,8 +22,7 @@ public class HomeFragment extends Fragment {
 
     Button btnYouOwe, btnOweYou;
     FloatingActionButton fab_add, fab_minus, fab;
-    Animation FabOpen, FabClose, FabClock, FabAntiClock;
-    boolean isOpen = false;
+    LinearLayout addL, minusL;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -45,34 +45,38 @@ public class HomeFragment extends Fragment {
         fab_add = view.findViewById(R.id.fab_add);
         fab_minus = view.findViewById(R.id.fab_minus);
 
-        FabOpen = AnimationUtils.loadAnimation(getActivity(), R.anim.fab_open);
-        FabClose = AnimationUtils.loadAnimation(getActivity(), R.anim.fab_close);
-        FabClock = AnimationUtils.loadAnimation(getActivity(), R.anim.rotate_closewise);
-        FabAntiClock = AnimationUtils.loadAnimation(getActivity(), R.anim.rotate_anticlockwise);
+        addL = view.findViewById(R.id.addLayout);
+        minusL = view.findViewById(R.id.minusLayout);
+
+        final Animation showBtn = AnimationUtils.loadAnimation(getActivity(), R.anim.show_btn);
+        final Animation hideBtn = AnimationUtils.loadAnimation(getActivity(), R.anim.hide_btn);
+        final Animation showLay = AnimationUtils.loadAnimation(getActivity(), R.anim.show_layout);
+        final Animation hideLay = AnimationUtils.loadAnimation(getActivity(), R.anim.hide_layout);
 
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fab.setImageResource(R.drawable.ic_close);
-                if (isOpen) {
-                    fab_add.startAnimation(FabClose);
-                    fab_minus.startAnimation(FabClose);
-                    fab.startAnimation(FabAntiClock);
-                    fab_add.setClickable(false);
-                    fab_minus.setClickable(false);
-                    isOpen = false;
+                if (addL.getVisibility() == View.VISIBLE && minusL.getVisibility() == View.VISIBLE) {
+                    addL.setVisibility(View.GONE);
+                    minusL.setVisibility(View.GONE);
+                    fab.startAnimation(hideBtn);
+                    addL.startAnimation(hideLay);
+                    minusL.startAnimation(hideLay);
+                    fab.setImageResource(R.drawable.ic_close);
 
                 } else {
-                    fab_add.startAnimation(FabOpen);
-                    fab_minus.startAnimation(FabOpen);
-                    fab.startAnimation(FabClock);
-                    fab_add.setClickable(true);
-                    fab_minus.setClickable(true);
-                    isOpen = true;
+                    addL.setVisibility(View.VISIBLE);
+                    minusL.setVisibility(View.VISIBLE);
+                    fab.startAnimation(showBtn);
+                    addL.startAnimation(showLay);
+                    minusL.startAnimation(showLay);
+                    fab.setImageResource(R.drawable.ic_add);
                 }
+
             }
         });
+
 
         fab_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +89,7 @@ public class HomeFragment extends Fragment {
         fab_minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AddBill.class);
+                Intent intent = new Intent(getActivity(), AddOweBill.class);
                 startActivity(intent);
             }
         });
