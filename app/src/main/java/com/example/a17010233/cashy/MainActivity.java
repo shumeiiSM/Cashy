@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        switch (item.getItemId()) {
+        switch (id) {
 
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.mainLayout, new HomeFragment()).commit();
@@ -108,27 +108,12 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_contact:
                 getSupportFragmentManager().beginTransaction().replace(R.id.mainLayout, new ContactFragment()).commit();
                 break;
+            case R.id.nav_logout:
+                Intent intent = new Intent(getBaseContext(), LoginScreen.class);
+                startActivity(intent);
+                //getSupportFragmentManager().beginTransaction().replace(R.id.mainLayout, new ContactFragment()).commit();
+                break;
 
-
-//        if (id == R.id.nav_home) {
-//            HomeFragment homeFragment = new HomeFragment();
-//            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//            fragmentTransaction.replace(R.id.mainLayout, homeFragment);
-//            fragmentTransaction.commit();
-//        } else if (id == R.id.nav_contact) {
-//            ContactFragment contactFragment = new ContactFragment();
-//            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//            fragmentTransaction.replace(R.id.mainLayout, contactFragment);
-//            fragmentTransaction.commit();
-
-
-//        } else if (id == R.id.nav_slideshow) {
-//
-//        } else if (id == R.id.nav_tools) {
-//
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
 
         }
 

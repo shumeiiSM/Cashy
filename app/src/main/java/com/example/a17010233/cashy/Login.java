@@ -63,9 +63,11 @@ public class Login extends AppCompatActivity {
                 String pass = etPass.getText().toString();
 
                 if (user.isEmpty()) {
-                    Toast.makeText(Login.this, "Please enter your username!", Toast.LENGTH_SHORT).show();
+                    etUser.setError("Please enter your username!");
+                    //Toast.makeText(Login.this, "Please enter your username!", Toast.LENGTH_SHORT).show();
                 } else if(pass.isEmpty()) {
-                    Toast.makeText(Login.this, "Please enter your password!", Toast.LENGTH_SHORT).show();
+                    etUser.setError("Please enter your password!");
+                    //Toast.makeText(Login.this, "Please enter your password!", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(getBaseContext(), MainActivity.class);
                     intent.putExtra("name", user);

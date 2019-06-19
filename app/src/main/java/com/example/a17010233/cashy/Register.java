@@ -58,17 +58,23 @@ public class Register extends AppCompatActivity {
                 }
 
                 if (user.isEmpty()) {
-                    Toast.makeText(Register.this, "Please enter your username!", Toast.LENGTH_SHORT).show();
+                    etUser.setError("Please enter your username!");
+                    //Toast.makeText(Register.this, "Please enter your username!", Toast.LENGTH_SHORT).show();
                 } else if(phone.isEmpty()) {
-                    Toast.makeText(Register.this, "Please enter your phone!", Toast.LENGTH_SHORT).show();
+                    etPhone.setError("Please enter your phone!");
+                    //Toast.makeText(Register.this, "Please enter your phone!", Toast.LENGTH_SHORT).show();
                 } else if(pass.isEmpty()) {
-                    Toast.makeText(Register.this, "Please enter your password!", Toast.LENGTH_SHORT).show();
+                    etPass.setError("Please enter your password!");
+                    //Toast.makeText(Register.this, "Please enter your password!", Toast.LENGTH_SHORT).show();
                 } else if(cpass.isEmpty()) {
-                    Toast.makeText(Register.this, "Please confirm your password!", Toast.LENGTH_SHORT).show();
+                    etCPass.setError("Please confirm your password!");
+                    //Toast.makeText(Register.this, "Please confirm your password!", Toast.LENGTH_SHORT).show();
                 } else if(count >= 9) {
-                    Toast.makeText(Register.this, "Maximum 8 Digits!", Toast.LENGTH_SHORT).show();
+                    etPhone.setError("Maximum 8 Digits!");
+                    //Toast.makeText(Register.this, "Maximum 8 Digits!", Toast.LENGTH_SHORT).show();
                 } else if(!pass.equals(cpass)) {
-                    Toast.makeText(Register.this, "Mismatch Password!", Toast.LENGTH_SHORT).show();
+                    etCPass.setError("Mismatch Password!");
+                    //Toast.makeText(Register.this, "Mismatch Password!", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(getBaseContext(), MainActivity.class);
                     intent.putExtra("name", user);

@@ -114,7 +114,7 @@
         android:id="@+id/btnLog"
         android:layout_width="match_parent"
         android:layout_height="58dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="5dp"
         android:background="@color/colorBlue"
         android:fontFamily="@font/pacifico"
         android:text="Login"
@@ -145,6 +145,6 @@
             android:fontFamily="@font/pacifico"
             android:textSize="15sp"
             android:textColor="@color/colorBlue"
-            android:text="Login" />
+            android:text="Sign In" />
     </LinearLayout>
 </LinearLayout>

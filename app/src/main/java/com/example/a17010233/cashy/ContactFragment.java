@@ -4,6 +4,7 @@ package com.example.a17010233.cashy;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +21,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -38,7 +40,6 @@ public class ContactFragment extends Fragment implements RecyclerItemTouchHelper
     TextView tvTotal;
 
 
-
     public ContactFragment() {
         // Required empty public constructor
     }
@@ -48,7 +49,7 @@ public class ContactFragment extends Fragment implements RecyclerItemTouchHelper
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view =  inflater.inflate(R.layout.fragment_contact, container, false);
+        View view = inflater.inflate(R.layout.fragment_contact, container, false);
 
         //final ArrayList<Contact> contacts = new ArrayList<>();
         contacts = new ArrayList<>();
@@ -57,6 +58,10 @@ public class ContactFragment extends Fragment implements RecyclerItemTouchHelper
         contacts.add(new Contact(R.drawable.ic_male, "Jerome", "93456789"));
         contacts.add(new Contact(R.drawable.ic_female, "Alvina", "94567890"));
         contacts.add(new Contact(R.drawable.ic_male, "Norman", "95678901"));
+
+        Intent intent = new Intent(getActivity(), AddBill.class);
+        intent.putExtra("QuestionListExtra", contacts);
+
 
         tvTotal = view.findViewById(R.id.tvTotal);
         int item = contacts.size();
@@ -81,7 +86,7 @@ public class ContactFragment extends Fragment implements RecyclerItemTouchHelper
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View viewDialog = inflater.inflate(R.layout.add_friend, null);
 
                 final EditText etName = viewDialog.findViewById(R.id.editTextN);
@@ -101,7 +106,7 @@ public class ContactFragment extends Fragment implements RecyclerItemTouchHelper
 
                         if (etMale.isChecked()) {
                             contacts.add(new Contact(R.drawable.ic_male, theName, theNum));
-                        } else if (etFemale.isChecked()){
+                        } else if (etFemale.isChecked()) {
                             contacts.add(new Contact(R.drawable.ic_female, theName, theNum));
                         }
 
@@ -114,7 +119,6 @@ public class ContactFragment extends Fragment implements RecyclerItemTouchHelper
                 myDialog.show();
             }
         });
-
 
 
         // Inflate the layout for this fragment
@@ -131,7 +135,7 @@ public class ContactFragment extends Fragment implements RecyclerItemTouchHelper
 
             adapter.removeItem(viewHolder.getAdapterPosition());
 
-            undoItem(viewHolder, name, contact,deletedIndex);
+            undoItem(viewHolder, name, contact, deletedIndex);
 
             int item = adapter.getItemCount();
             tvTotal.setText(String.valueOf(item));
@@ -141,7 +145,7 @@ public class ContactFragment extends Fragment implements RecyclerItemTouchHelper
 
     private void undoItem(RecyclerView.ViewHolder viewHolder, String name, final Contact contact, final int deletedIndex) {
 
-        Snackbar snackbar = Snackbar.make(((ContactAdapter.ContactViewHolder)viewHolder).foreBackground,name + " is deleted", Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(((ContactAdapter.ContactViewHolder) viewHolder).foreBackground, name + " is deleted", Snackbar.LENGTH_LONG);
         snackbar.setAction("UNDO", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

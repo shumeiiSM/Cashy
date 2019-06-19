@@ -1,6 +1,8 @@
 package com.example.a17010233.cashy;
 
-public class Contact {
+import java.io.Serializable;
+
+public class Contact implements Serializable {
     private int mImageResource;
     private String name;
     private String phone;
@@ -34,4 +36,5 @@ public class Contact {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
 }

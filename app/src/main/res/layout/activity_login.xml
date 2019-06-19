@@ -84,7 +84,7 @@
         android:id="@+id/btnLog"
         android:layout_width="match_parent"
         android:layout_height="62dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="40dp"
         android:fontFamily="@font/pacifico"
         android:background="@color/colorBlue"
         android:textColor="@color/white"

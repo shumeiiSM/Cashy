@@ -36,7 +36,11 @@ public class HomeFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View rootView = getActivity().findViewById(android.R.id.content);
-        Snackbar.make(rootView, "Hello Home", Snackbar.LENGTH_LONG).show();
+        //String myName = getActivity().getIntent().getExtras().getString("name");
+
+        //Snackbar.make(rootView, "Hello " + myName, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(rootView, "Hello ", Snackbar.LENGTH_LONG).show();
+
 
         btnYouOwe = view.findViewById(R.id.btnB);
         btnOweYou = view.findViewById(R.id.btnO);
@@ -83,6 +87,14 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddBill.class);
                 startActivity(intent);
+
+                addL.setVisibility(View.GONE);
+                minusL.setVisibility(View.GONE);
+                fab.startAnimation(hideBtn);
+                addL.startAnimation(hideLay);
+                minusL.startAnimation(hideLay);
+                fab.setImageResource(R.drawable.ic_close);
+
             }
         });
 
@@ -91,6 +103,13 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddOweBill.class);
                 startActivity(intent);
+
+                addL.setVisibility(View.GONE);
+                minusL.setVisibility(View.GONE);
+                fab.startAnimation(hideBtn);
+                addL.startAnimation(hideLay);
+                minusL.startAnimation(hideLay);
+                fab.setImageResource(R.drawable.ic_close);
             }
         });
 
