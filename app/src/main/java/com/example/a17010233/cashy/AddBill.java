@@ -1,5 +1,6 @@
 package com.example.a17010233.cashy;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,16 +10,34 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 public class AddBill extends AppCompatActivity {
 
     Button btnDone, btnBack;
     ListView lvCheck;
-    ArrayAdapter aa;
+
+    Button btnDate, btnIcon;
+    TextView tvDate;
+    EditText etMoney, etText;
+    Spinner spinner;
+
+    String paid;
+    String selectedName;
+
+    AddBillAdapter billAdapter = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,22 +48,134 @@ public class AddBill extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         lvCheck = findViewById(R.id.lvCheck);
 
-        ArrayList<Contact> list = new ArrayList<Contact>();
-        list = (ArrayList<Contact>) getIntent().getSerializableExtra("QuestionListExtra");
+        btnDate = findViewById(R.id.btnDate);
+        btnIcon = findViewById(R.id.btnIcon);
+        tvDate = findViewById(R.id.tvDate);
+        etMoney = findViewById(R.id.etMoney);
+        etText = findViewById(R.id.etText);
+        spinner = findViewById(R.id.spinner);
+
+        //ArrayList<String> imageslist = (ArrayList<String>) getIntent().getSerializableExtra("QuestionListExtra");
+        //list = (ArrayList<Contact>) getIntent().getSerializableExtra("QuestionListExtra");
+        // aa = new AddBillAdapter(this, R.layout.oweyou, list);
+        // lvCheck.setAdapter(aa);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0:
+                        paid = String.valueOf(spinner.getSelectedItem());
+                        break;
+                    case 1:
+                        paid = String.valueOf(spinner.getSelectedItem());
+                        break;
+                    case 2:
+                        paid = String.valueOf(spinner.getSelectedItem());
+                        break;
+                    case 3:
+                        paid = String.valueOf(spinner.getSelectedItem());
+                        break;
+                    case 4:
+                        paid = String.valueOf(spinner.getSelectedItem());
+                        break;
+                    case 5:
+                        paid = String.valueOf(spinner.getSelectedItem());
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+
+        });
+
+        SimpleDateFormat date = new SimpleDateFormat("MM/dd/yyyy");
+        String cDate = date.format(new Date());
+        tvDate.setText(cDate);
+
+        btnDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                        tvDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                    }
+                };
+
+                // Create the DatePicker Dialog
+                Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR);
+                int mMonth = c.get(Calendar.MONTH);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog myDateDialog = new DatePickerDialog(AddBill.this,
+                        myDateListener, mYear, mMonth, mDay);
+
+                myDateDialog.show();
+            }
+        });
 
 
-        aa = new AddBillAdapter(this, R.layout.oweyou, list);
-        lvCheck.setAdapter(aa);
+        final List<Friend> users = new ArrayList<>();
+        users.add(new Friend("Vanessa", false));
+        users.add(new Friend("Shao Jie", false));
+        users.add(new Friend("Jerome", false));
+        users.add(new Friend("Alvina", false));
+        users.add(new Friend("Norman", false));
+
+        final AddBillAdapter adapter = new AddBillAdapter(this, users);
+        lvCheck.setAdapter(adapter);
+
+        lvCheck.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Friend model = users.get(i);
+
+                if (model.isSelected()) {
+                    model.setSelected(false);
+                } else {
+                    model.setSelected(true);
+                }
+                users.set(i, model);
+
+                //now update adapter
+                adapter.updateRecords(users);
+            }
+        });
 
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String amount = etMoney.getText().toString();
+                String text = etText.getText().toString();
+                String date = etText.getText().toString();
 
-                Fragment fragment = new HomeFragment();
+                for (int i=0; i<users.size(); i++){
+                    Friend friend = users.get(i);
 
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    if(friend.isSelected()){
+                        selectedName = friend.getName();
+                        if (i != users.size() - 1) {
+                            if (friend.isSelected()) {
+                                selectedName = selectedName + ", " + friend.getName();
+                            }
+                        }
+                    }
+                    Toast.makeText(AddBill.this, selectedName, Toast.LENGTH_LONG).show();
+                }
 
-                transaction.replace(R.id.layout, fragment).commit();
+                //Toast.makeText(AddBill.this, paid + " paid $" + amount + "\n" , Toast.LENGTH_LONG).show();
+
+                finish();
+
+//                Fragment fragment = new HomeFragment();
+//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.layout, fragment).commit();
             }
         });
 
@@ -55,13 +186,6 @@ public class AddBill extends AppCompatActivity {
             }
         });
 
-        lvCheck.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Contact contact = (Contact) parent.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(), contact.getName() + " is selected", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
 

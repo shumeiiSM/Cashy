@@ -59,9 +59,9 @@ public class ContactFragment extends Fragment implements RecyclerItemTouchHelper
         contacts.add(new Contact(R.drawable.ic_female, "Alvina", "94567890"));
         contacts.add(new Contact(R.drawable.ic_male, "Norman", "95678901"));
 
-        Intent intent = new Intent(getActivity(), AddBill.class);
-        intent.putExtra("QuestionListExtra", contacts);
-
+        //Intent intent = new Intent(getActivity(), AddBill.class);
+        //intent.putExtra("QuestionListExtra", contacts);
+        //startActivity(intent);
 
         tvTotal = view.findViewById(R.id.tvTotal);
         int item = contacts.size();
