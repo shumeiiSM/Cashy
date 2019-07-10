@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".AddOweBill" />
         <activity android:name=".AddBill" />
         <activity android:name=".OweYou" />
         <activity android:name=".YouOwe" />
@@ -16,11 +17,11 @@
         <activity android:name=".Forgot" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
-        <activity android:name=".LoginScreen" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".LoginScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

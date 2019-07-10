@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,6 +36,7 @@ public class AddBill extends AppCompatActivity {
 
     String paid;
     String selectedName;
+    ArrayList<String> name;
 
     AddBillAdapter billAdapter = null;
 
@@ -43,6 +45,8 @@ public class AddBill extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bill);
+
+        name = new ArrayList<String>();
 
         btnDone = findViewById(R.id.btndone);
         btnBack = findViewById(R.id.btnBack);
@@ -138,8 +142,13 @@ public class AddBill extends AppCompatActivity {
 
                 if (model.isSelected()) {
                     model.setSelected(false);
+                    name.add(model.getName());
+
                 } else {
                     model.setSelected(true);
+                    if (name.size() != 0) {
+                        name.remove(name.size() - 1);
+                    }
                 }
                 users.set(i, model);
 
@@ -153,30 +162,37 @@ public class AddBill extends AppCompatActivity {
             public void onClick(View v) {
                 String amount = etMoney.getText().toString();
                 String text = etText.getText().toString();
-                String date = etText.getText().toString();
+                String date = tvDate.getText().toString();
 
-                for (int i=0; i<users.size(); i++){
-                    Friend friend = users.get(i);
-
-                    if(friend.isSelected()){
-                        selectedName = friend.getName();
-                        if (i != users.size() - 1) {
-                            if (friend.isSelected()) {
-                                selectedName = selectedName + ", " + friend.getName();
-                            }
-                        }
-                    }
-                    Toast.makeText(AddBill.this, selectedName, Toast.LENGTH_LONG).show();
+                for(int i = 0; i<name.size(); i++){
+                    selectedName += name.get(i);
                 }
 
-                //Toast.makeText(AddBill.this, paid + " paid $" + amount + "\n" , Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getBaseContext(),YouOwe.class);
+                intent.putExtra("name",paid);
+                intent.putExtra("name",selectedName);
+                intent.putExtra("amt",amount);
+                intent.putExtra("text",text);
+                intent.putExtra("date",date);
+                startActivity(intent);
 
-                finish();
+                //Toast.makeText(AddBill.this, (CharSequence) name, Toast.LENGTH_LONG).show();
+                //finish();
+
+//                for (int i = 0; i < users.size(); i++) {
+//                    Friend friend = users.get(i);
+//
+//                    if (friend.isSelected()) {
+//                        selectedName = friend.getName();
+//                    }
+//                }
+            }
+            //Toast.makeText(AddBill.this, paid + " paid $" + amount + "\n" , Toast.LENGTH_LONG).show();
+
 
 //                Fragment fragment = new HomeFragment();
 //                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 //                transaction.replace(R.id.layout, fragment).commit();
-            }
         });
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -187,9 +203,6 @@ public class AddBill extends AppCompatActivity {
         });
 
     }
-
-
-
 
 
 }
