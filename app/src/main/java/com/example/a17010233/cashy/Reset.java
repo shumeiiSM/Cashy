@@ -9,11 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class Reset extends AppCompatActivity {
 
     Button btnBack, btnSubmit;
 
     EditText etNPass, etNCPass;
+
+    Account acc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +52,16 @@ public class Reset extends AppCompatActivity {
                 } else if (!newPass.equals(newCPass)) {
                     Toast.makeText(Reset.this, "Mismatch Password", Toast.LENGTH_SHORT).show();
                 } else {
+                    LoginHelper helper = new LoginHelper(Reset.this);
+
+                    acc.setPass(newPass);
+                    helper.updateAcc(acc);
+
                     Intent intent = new Intent(getBaseContext(), Login.class);
                     startActivity(intent);
+
+                    helper.close();
+
                 }
             }
         });

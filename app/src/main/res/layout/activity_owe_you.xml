@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".OweYou">
 
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -37,88 +38,129 @@
             android:layout_marginTop="55dp"
             android:fontFamily="@font/pacifico"
             android:gravity="center"
-            android:text="Owe You"
+            android:text="I Owe You"
             android:textSize="35sp" />
     </FrameLayout>
 
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_marginBottom="5dp">-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/tvTotal"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_weight="1"-->
-    <!--android:fontFamily="@font/pacifico"-->
-    <!--android:gravity="end"-->
-    <!--android:text="Number"-->
-    <!--android:textSize="20sp" />-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/tv"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_weight="1"-->
-    <!--android:fontFamily="@font/pacifico"-->
-    <!--android:gravity="start"-->
-    <!--android:text=" People"-->
-    <!--android:textSize="20sp" />-->
-    <!--</LinearLayout>-->
-
     <Space
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="30dp" />
 
-    <TextView
-        android:id="@+id/paid"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/pacifico"
         android:gravity="center"
-        android:text="Paid"
-        android:textSize="40sp" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/text"
+        <TextView
+            android:id="@+id/apaid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pacifico"
+            android:gravity="center"
+            android:text="Who Paid : "
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/paid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pacifico"
+            android:gravity="center"
+            android:text="Paid"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/pacifico"
         android:gravity="center"
-        android:text="Text"
-        android:textSize="30sp" />
+        android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/aname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pacifico"
+            android:gravity="center"
+            android:text="Who Owe : "
+            android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/name"
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pacifico"
+            android:gravity="center"
+            android:text="Name"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/pacifico"
         android:gravity="center"
-        android:text="Name"
-        android:textSize="30sp" />
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/date"
+        <TextView
+            android:id="@+id/atext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pacifico"
+            android:gravity="center"
+            android:text="Remarks : "
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pacifico"
+            android:gravity="center"
+            android:text="Text"
+            android:textSize="30sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/pacifico"
         android:gravity="center"
-        android:text="Date"
-        android:textSize="30sp" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/adate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pacifico"
+            android:gravity="center"
+            android:text="Date : "
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pacifico"
+            android:gravity="center"
+            android:text="Date"
+            android:textSize="30sp" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/pacifico"
-        android:gravity="center"
+        android:gravity="center|bottom"
         android:text="Amount"
         android:textSize="40sp" />
 
+
 </LinearLayout>
-
-
-    <!--<android.support.v7.widget.RecyclerView--><!--android:id="@+id/recyclerView"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:background="@color/grey"--><!--android:padding="4dp"--><!--android:scrollbars="vertical" />-->

@@ -38,7 +38,7 @@
             android:inputType="textPersonName"
             android:gravity="center"
             android:textSize="20sp"
-            android:hint="Text"/>
+            android:hint="Remark"/>
 
         <TextView
             android:id="@+id/tv2"

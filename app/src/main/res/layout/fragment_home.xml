@@ -40,7 +40,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/balance"
                 android:fontFamily="@font/pacifico"
-                android:text="$0"
+                android:text="0"
                 android:textColor="@color/white"
                 android:textSize="50sp" />
 
@@ -74,47 +74,47 @@
                 android:layout_weight="1"
                 android:background="@drawable/owe"
                 android:fontFamily="@font/pacifico"
-                android:text="$0"
+                android:text="0"
                 android:textColor="@color/white"
                 android:textSize="50sp" />
         </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/addLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_marginRight="16dp"
-            android:orientation="horizontal"
-            android:visibility="invisible">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/addLayout"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="bottom|right"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:visibility="invisible">-->
 
-            <TextView
-                android:id="@+id/tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextAppearance.AppCompat.Title"
-                android:layout_marginRight="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginTop="10dp"
-                android:text="ADD"/>
+            <!--<TextView-->
+                <!--android:id="@+id/tv"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--style="@style/TextAppearance.AppCompat.Title"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--android:layout_marginEnd="5dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:text="ADD"/>-->
 
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:clickable="true"
-                android:layout_marginRight="@dimen/fab_margin_right"
-                android:layout_marginBottom="180dp"
-                android:backgroundTint="@color/add"
-                android:elevation="6dp"
-                app:pressedTranslationZ="12dp"
-                app:srcCompat="@drawable/ic_happy"
-                tools:ignore="VectorDrawableCompat" />
+            <!--<android.support.design.widget.FloatingActionButton-->
+                <!--android:id="@+id/fab_add"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="bottom|end"-->
+                <!--android:clickable="true"-->
+                <!--android:layout_marginRight="@dimen/fab_margin_right"-->
+                <!--android:layout_marginBottom="180dp"-->
+                <!--android:backgroundTint="@color/add"-->
+                <!--android:elevation="6dp"-->
+                <!--app:pressedTranslationZ="12dp"-->
+                <!--app:srcCompat="@drawable/ic_happy"-->
+                <!--tools:ignore="VectorDrawableCompat" />-->
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
         <LinearLayout
             android:id="@+id/minusLayout"
@@ -134,7 +134,7 @@
             android:layout_marginRight="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginTop="10dp"
-            android:text="MINUS"/>
+            android:text="Add Bill"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_minus"

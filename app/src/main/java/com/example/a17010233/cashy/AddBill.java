@@ -2,7 +2,9 @@ package com.example.a17010233.cashy;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -35,7 +37,7 @@ public class AddBill extends AppCompatActivity {
     Spinner spinner;
 
     String paid;
-    String selectedName;
+    String selectedName = "";
     ArrayList<String> name;
 
     AddBillAdapter billAdapter = null;
@@ -164,17 +166,47 @@ public class AddBill extends AppCompatActivity {
                 String text = etText.getText().toString();
                 String date = tvDate.getText().toString();
 
-                for(int i = 0; i<name.size(); i++){
-                    selectedName += name.get(i);
+
+                for(int i = 0; i< users.size(); i++){
+                    Friend friend = users.get(i);
+
+                    if(friend.isSelected()) {
+                        selectedName = selectedName + " " + friend.getName();
+                    }
                 }
 
-                Intent intent = new Intent(getBaseContext(),YouOwe.class);
-                intent.putExtra("name",paid);
-                intent.putExtra("name",selectedName);
-                intent.putExtra("amt",amount);
-                intent.putExtra("text",text);
-                intent.putExtra("date",date);
-                startActivity(intent);
+                if (paid.equals("Me")) {
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(AddBill.this);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("paid", paid);
+                    editor.putString("amount", amount);
+                    editor.putString("selectedName", selectedName);
+                    editor.putString("text", text);
+                    editor.putString("date", date);
+                    editor.commit();
+
+                } else {
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(AddBill.this);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("opaid", paid);
+                    editor.putString("oamount", amount);
+                    editor.putString("oselectedName", selectedName);
+                    editor.putString("otext", text);
+                    editor.putString("odate", date);
+                    editor.commit();
+                }
+                Toast.makeText(AddBill.this, paid + "\n" + amount + "\n" +
+                        selectedName + "\n" + text + "\n" + date, Toast.LENGTH_LONG).show();
+                setResult(RESULT_OK);
+                finish();
+
+//                Intent intent = new Intent(getBaseContext(),YouOwe.class);
+//                intent.putExtra("name",paid);
+//                intent.putExtra("name",selectedName);
+//                intent.putExtra("amt",amount);
+//                intent.putExtra("text",text);
+//                intent.putExtra("date",date);
+//                startActivity(intent);
 
                 //Toast.makeText(AddBill.this, (CharSequence) name, Toast.LENGTH_LONG).show();
                 //finish();
@@ -189,10 +221,6 @@ public class AddBill extends AppCompatActivity {
             }
             //Toast.makeText(AddBill.this, paid + " paid $" + amount + "\n" , Toast.LENGTH_LONG).show();
 
-
-//                Fragment fragment = new HomeFragment();
-//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.layout, fragment).commit();
         });
 
         btnBack.setOnClickListener(new View.OnClickListener() {

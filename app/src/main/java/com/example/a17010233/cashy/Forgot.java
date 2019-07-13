@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Forgot extends AppCompatActivity {
@@ -59,12 +60,26 @@ public class Forgot extends AppCompatActivity {
                     }
                 }
 
-                if (count >= 9 ) {
-                    etPhone.setError("Maximum 8 Digits!");
-                    //Toast.makeText(Forgot.this, "Maximum 8 Digits!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Snackbar.make(linearLayout, String.valueOf(random), Snackbar.LENGTH_LONG).show();
-                    //Toast.makeText(Forgot.this, String.valueOf(random), Toast.LENGTH_LONG).show();
+                LoginHelper helper = new LoginHelper(Forgot.this);
+                ArrayList<Account> data = helper.getAllAccount();
+
+                for(int i = 0; i < data.size(); i++) {
+                    int dNum = data.get(i).getNum();
+
+                    String sNum = String.valueOf(dNum);
+
+                    if (phone.equals(sNum)) {
+                        if (count >= 9 ) {
+                            etPhone.setError("Maximum 8 Digits!");
+                            //Toast.makeText(Forgot.this, "Maximum 8 Digits!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Snackbar.make(linearLayout, String.valueOf(random), Snackbar.LENGTH_LONG).show();
+                            //Toast.makeText(Forgot.this, String.valueOf(random), Toast.LENGTH_LONG).show();
+                        }
+
+                    } else if (!phone.equals(sNum)){
+                        Toast.makeText(Forgot.this, "No Number Found", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

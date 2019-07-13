@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class Register extends AppCompatActivity {
 
     Button btnBack, btnLogin;
@@ -57,6 +59,8 @@ public class Register extends AppCompatActivity {
                     }
                 }
 
+                int intPhone = Integer.parseInt(phone);
+
                 if (user.isEmpty()) {
                     etUser.setError("Please enter your username!");
                     //Toast.makeText(Register.this, "Please enter your username!", Toast.LENGTH_SHORT).show();
@@ -76,8 +80,30 @@ public class Register extends AppCompatActivity {
                     etCPass.setError("Mismatch Password!");
                     //Toast.makeText(Register.this, "Mismatch Password!", Toast.LENGTH_SHORT).show();
                 } else {
+                    LoginHelper helper = new LoginHelper(Register.this);
+                    ArrayList<Account> data = helper.getAllAccount();
+
+                    long row_affected = helper.insertAccount(user, intPhone, pass);
+                    helper.close();
+
+                    if (row_affected != -1){
+                        Toast.makeText(Register.this, "Insert successful",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    for(int i = 0; i < data.size(); i++) {
+                        String name = data.get(i).getName();
+                        int num = data.get(i).getNum();
+
+                        String sNum = String.valueOf(num);
+
+                        if (user.equals(name) && phone.equals(sNum)) {
+                            Toast.makeText(Register.this, "Existing Name", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
                     Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                    intent.putExtra("name", user);
+                    //intent.putExtra("name", user);
                     startActivity(intent);
                 }
             }
